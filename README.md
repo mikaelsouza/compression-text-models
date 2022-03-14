@@ -22,6 +22,13 @@ Full requirement list can be found in the `requirements.txt` file.
 
 ### Operating System
 
-```python
+```
 Ubuntu 20.04 LTS
 ```
+
+### Used Datasets
+
+| Dataset | Link                                           |
+| ------- | ---------------------------------------------- |
+| brwac   | http://nlpserver2.inf.ufrgs.br/brwac-download/ |
+| assin2  | https://huggingface.co/datasets/assin2         |
