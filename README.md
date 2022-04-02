@@ -30,5 +30,5 @@ Ubuntu 20.04 LTS
 
 | Dataset | Link                                           |
 | ------- | ---------------------------------------------- |
-| brwac   | http://nlpserver2.inf.ufrgs.br/brwac-download/ |
+| brwac   | https://huggingface.co/datasets/brwac          |
 | assin2  | https://huggingface.co/datasets/assin2         |
