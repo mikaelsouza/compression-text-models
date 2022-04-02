@@ -20,9 +20,9 @@ data/clean/*
 data/processed/*
 !data/processed/.gitkeep
 
-
 # Notebook
-notebook/.ipynb_checkpoints
+notebooks/.ipynb_checkpoints
+notebooks/trash/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
