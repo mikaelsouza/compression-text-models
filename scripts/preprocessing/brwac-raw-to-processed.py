@@ -1,8 +1,8 @@
 import logging
 from datasets import load_dataset
-from os import cpu_count
 from typing import List, Dict
 from itertools import chain
+from transformers import AutoTokenizer
 
 
 def join_document_paragraphs(doc_paragraphs: List[List[str]]) -> Dict[str, str]:
@@ -12,7 +12,7 @@ def join_document_paragraphs(doc_paragraphs: List[List[str]]) -> Dict[str, str]:
 
 def main():
 
-    num_processes = cpu_count()
+    num_processes = 4
     dataset_path = "data/processed/brwac-000"
 
     logging.basicConfig(format="%(levelname)s:%(message)s", level=logging.INFO)
@@ -32,11 +32,18 @@ def main():
     )
 
     logging.info(f"Dropping old list of paragraphs.")
-    brwac_ds = brwac_ds["train"].remove_columns(["text"])
+    brwac_ds["train"] = brwac_ds["train"].remove_columns(["text"])
 
     logging.info(
-        f"Saving new preprocessed dataset to disk. Save path: {dataset_path}"
+        f"Tokenizing dataset with BERT Tokenizer using {num_processes} threads."
     )
+    tokenizer = AutoTokenizer.from_pretrained("neuralmind/bert-base-portuguese-cased")
+    brwac_ds["train"] = brwac_ds["train"].map(
+        lambda example: tokenizer(example["processed_text"]),
+        num_proc=num_processes,
+    )
+
+    logging.info(f"Saving new preprocessed dataset to disk. Save path: {dataset_path}")
     brwac_ds.save_to_disk(dataset_path)
 
 
