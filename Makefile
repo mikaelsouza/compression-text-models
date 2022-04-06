@@ -7,3 +7,7 @@ download-brwac:
 extract-brwac:
 	mkdir -p data/raw/brwac/
 	gzip --keep -d --stdout data/external/brwac.vert.gz > data/raw/brwac/brwac.vert
+
+.PHONY: raw-to-processed-brwac
+raw-to-processed-brwac:
+	python scripts/preprocessing/brwac-raw-to-processed.py
