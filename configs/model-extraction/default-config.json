@@ -1,7 +1,7 @@
 {
     "model_type": "bert",
     "model_name": "neuralmind/bert-base-portuguese-cased",
-    "dump_path": "models/artifacts/layer-extraction/default-model.pth",
+    "dump_path": "models/artifacts/model-extraction/default-model.pth",
     "vocab_transform": true,
     "extraction_idx": [
         0,
