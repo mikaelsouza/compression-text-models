@@ -1,0 +1,14 @@
+{
+    "model_type": "bert",
+    "model_name": "neuralmind/bert-base-portuguese-cased",
+    "dump_path": "models/artifacts/model-extraction/default-model.pth",
+    "vocab_transform": true,
+    "extraction_idx": [
+        0,
+        2,
+        4,
+        7,
+        9,
+        11
+    ]
+}
