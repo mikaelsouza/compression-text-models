@@ -2,11 +2,12 @@
 
 
 import argparse
-from typing import List
-import torch
 import json
 import logging
+from pathlib import Path
+from typing import List
 
+import torch
 from transformers import BertForMaskedLM
 
 
@@ -36,7 +37,7 @@ def main():
     model_name: str = extraction_config["model_name"]
     vocab_transform: bool = extraction_config["vocab_transform"]
     extraction_idx: List[int] = extraction_config["extraction_idx"]
-    dump_path: str = extraction_config['dump_path']
+    dump_path: Path = Path(extraction_config["dump_path"])
 
     logging.info(f"Loading {model_type} model: {model_name}")
     prefix = model_type
@@ -114,6 +115,7 @@ def main():
         f"Number of params transferred for distillation: {len(compressed_sd.keys())}"
     )
 
+    dump_path.parent.mkdir(parents=True, exist_ok=True)
     logging.info(f"Saving extracted model layers to {dump_path}")
     torch.save(compressed_sd, dump_path)
 
