@@ -12,6 +12,7 @@ pytorch-lightning = "^1.6.0"
 pandas = "^1.4.1"
 numpy = "^1.22.3"
 transformers = "^4.17.0"
+wandb = "^0.13.1"
 
 [tool.poetry.dev-dependencies]
 jupyter = "^1.0.0"
