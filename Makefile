@@ -19,3 +19,17 @@ raw-to-txt-brwac:
 .PHONY: processed-to-txt-brwac
 processed-to-text-brwac:
 	python scripts/preprocessing/brwac-processed-to-txt.py
+
+.PHONY: train-distilbert
+train-distilbert:
+	python src/distillation/train.py \
+    --student_type distilbert \
+    --student_config configs/distillation/distilbert-base-cased.json \
+    --teacher_type bert \
+    --teacher_name neuralmind/bert-base-portuguese-cased \
+    --alpha_ce 0.33 --alpha_mlm 0.33 --alpha_cos 0.33 --alpha_clm 0.0 --mlm \
+    --freeze_pos_embs \
+    --dump_path data/training-results/baseline/joined \
+    --data_file data/processed/brwac-tokenized-new/joined-sentences.pickle \
+    --token_counts data/processed/brwac-tokenized-new/joined-token-counts.pickle \
+    --force \
