@@ -6,6 +6,9 @@ models/artifacts/*
 models/hyperparameters/*
 !models/hyperparameters/.gitkeep
 
+models/training-results/*
+!models/training-results/.gitkeep
+
 # Data
 
 data/raw/*
