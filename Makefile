@@ -29,7 +29,8 @@ train-distilbert:
     --teacher_name neuralmind/bert-base-portuguese-cased \
     --alpha_ce 0.33 --alpha_mlm 0.33 --alpha_cos 0.33 --alpha_clm 0.0 --mlm \
     --freeze_pos_embs \
-    --dump_path data/training-results/baseline/joined \
-    --data_file data/processed/brwac-tokenized-new/joined-sentences.pickle \
-    --token_counts data/processed/brwac-tokenized-new/joined-token-counts.pickle \
+    --dump_path models/training-results/baseline/$(shell date +%s)/joined \
+    --data_file data/processed/tokenized/joined-sentences.pickle \
+    --token_counts data/processed/tokenized/joined-token-counts.pickle \
     --force \
+    --n_epoch 1
