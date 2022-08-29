@@ -16,10 +16,6 @@ raw-to-processed-brwac:
 raw-to-txt-brwac:
 	python scripts/preprocessing/brwac-raw-to-txt.py
 
-.PHONY: processed-to-txt-brwac
-processed-to-text-brwac:
-	python scripts/preprocessing/brwac-processed-to-txt.py
-
 .PHONY: train-distilbert
 train-distilbert:
 	python src/distillation/train.py \
