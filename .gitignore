@@ -11,6 +11,9 @@ models/training-results/*
 
 # Data
 
+data/bin/*
+!data/bin/.gitkeep
+
 data/raw/*
 !data/raw/.gitkeep
 
