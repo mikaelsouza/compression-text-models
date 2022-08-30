@@ -64,7 +64,7 @@ def main():
 
     # Part 5
     logging.info(f"Removing text sentences from dataset.")
-    brwac_ds.remove_columns(["text"])
+    brwac_ds = brwac_ds.remove_columns(["text"])
 
     # Part 6
     logging.info(f"Breaking input_ids into 512 sized lists.")
