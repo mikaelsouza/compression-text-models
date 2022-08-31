@@ -30,3 +30,19 @@ train-distilbert:
     --token_counts data/processed/tokenized/joined-token-counts.pickle \
     --force \
     --n_epoch 1
+
+.PHONY: train-distilbert-from-pretrained
+train-distilbert-from-pretrained:
+	python src/distillation/train.py \
+    --student_type distilbert \
+    --student_config configs/distillation/distilbert-base-cased.json \
+    --teacher_type bert \
+    --teacher_name neuralmind/bert-base-portuguese-cased \
+    --alpha_ce 0.33 --alpha_mlm 0.33 --alpha_cos 0.33 --alpha_clm 0.0 --mlm \
+    --freeze_pos_embs \
+    --dump_path models/training-results/baseline-with-pretrain/$(shell date +%s)/joined \
+    --data_file data/processed/tokenized/joined-sentences.pickle \
+    --token_counts data/processed/tokenized/joined-token-counts.pickle \
+    --force \
+    --student_pretrained_weights models/artifacts/model-extraction/default-model.pth \
+    --n_epoch 1
