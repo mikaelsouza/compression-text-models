@@ -24,7 +24,7 @@ processed-to-training-input:
 extract-default-model:
 	python src/distillation/scripts/extract_distilbert.py \
     --model_name neuralmind/bert-base-portuguese-cased \
-    --dump_checkpoint models/artifacts/model-extraction/default-model-pth
+    --dump_checkpoint models/artifacts/model-extraction/default-model.pth
 
 .PHONY: train-distilbert
 train-distilbert:
