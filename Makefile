@@ -16,6 +16,16 @@ raw-to-processed-brwac:
 raw-to-txt-brwac:
 	python scripts/preprocessing/brwac-raw-to-txt.py
 
+.PHONY: processed-to-training-input
+processed-to-training-input:
+	python scripts/processing/processed-to-training-input.py
+
+.PHONY: extract-default-model
+extract-default-model:
+	python src/distillation/scripts/extract_distilbert.py \
+    --model_name neuralmind/bert-base-portuguese-cased \
+    --dump_checkpoint models/artifacts/model-extraction/default-model-pth
+
 .PHONY: train-distilbert
 train-distilbert:
 	python src/distillation/train.py \
