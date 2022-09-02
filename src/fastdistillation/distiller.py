@@ -1,3 +1,4 @@
+import logging
 import math
 import os
 import time
@@ -5,7 +6,6 @@ import time
 import psutil
 import torch
 from src.fastdistillation.lm_seqs_dataset import LmSeqsDataset
-from src.fastdistillation.utils import logger
 from torch import nn
 from torch.optim import AdamW
 from torch.utils.data import BatchSampler, DataLoader, RandomSampler
@@ -13,6 +13,13 @@ from torch.utils.data.distributed import DistributedSampler
 from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 from transformers import get_linear_schedule_with_warmup
+
+logging.basicConfig(
+    format="%(asctime)s - %(levelname)s - %(name)s - PID: %(process)d -  %(message)s",
+    datefmt="%m/%d/%Y %H:%M:%S",
+    level=logging.INFO,
+)
+logger = logging.getLogger(__name__)
 
 
 class Distiller:
