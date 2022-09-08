@@ -39,7 +39,7 @@ class LmSeqsDataset(Dataset):
         data: `List[np.array[int]]
     """
 
-    def __init__(self, data: torch.FloatTensor, attn_mask: torch.LongTensor):
+    def __init__(self, data: torch.ShortTensor, attn_mask: torch.ByteTensor):
         self.token_ids = data
         self.attn_mask = attn_mask
 
